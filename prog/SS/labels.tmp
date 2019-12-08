@@ -1,0 +1,27 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.42</VERSION>
+ <DEVICE>AT90S8515</DEVICE>
+ <WORKING_DIR>D:\MPS\prog\SS</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:\ProgramData\AVR_Studio\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>D:\MPS\prog\SS\SS.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:\ProgramData\AVR_Studio\AvrAssembler2\Appnotes\8515def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>D:\MPS\prog\SS\SS.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>D:\MPS\prog\SS\SS.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>D:\MPS\prog\SS\SS.map</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>17</LINE></INIT>
+  <TIME0_OVER><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>48</LINE></TIME0_OVER>
+  <CICLE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>45</LINE></CICLE>
+  <time0_continue><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>68</LINE></time0_continue>
+ </LABELS>
+</ASSEMBLER_INFO>
