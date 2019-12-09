@@ -6,7 +6,7 @@
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
-   <POPUP w="800" x="38" flags="00000002" y="129" h="676" pid="0" iid="-1">
+   <POPUP w="800" x="79" flags="00000002" y="357" h="676" pid="0" iid="-1">
     <PROPERTIES>
      <ITEM name="Message Column Width">663</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
@@ -15,7 +15,7 @@
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="350" x="58" flags="00000033" y="149" h="200" pid="1" iid="-1">
+   <POPUP w="350" x="539" flags="00000032" y="144" h="200" pid="1" iid="-1">
     <PROPERTIES>
      <ITEM name="Address Column Width">83</ITEM>
      <ITEM name="AutoResize">No</ITEM>
@@ -32,13 +32,13 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="572" flags="00008023" y="360" h="250" pid="0" iid="2">
+   <POPUP w="450" x="188" flags="00000023" y="233" h="250" pid="0" iid="2">
     <PROPERTIES>
      <ITEM name="AutoEcho">1</ITEM>
-     <ITEM name="HexMode">1</ITEM>
+     <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="538" flags="00000009" y="175" h="16" pid="3" iid="1">
+   <POPUP w="30" x="946" flags="00000009" y="121" h="16" pid="3" iid="1">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="118" flags="0000000a" y="209" h="1" pid="10" iid="1">
@@ -61,7 +61,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="158" flags="0000000a" y="249" h="32" pid="7" iid="1">
+   <POPUP w="16" x="105" flags="0000000a" y="133" h="32" pid="7" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -71,7 +71,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="178" flags="80000000" y="269" h="32" pid="14" iid="1">
+   <POPUP w="16" x="178" flags="00000000" y="269" h="32" pid="14" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -81,7 +81,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="198" flags="0000000a" y="289" h="32" pid="4" iid="1">
+   <POPUP w="16" x="184" flags="0000000b" y="565" h="32" pid="4" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -91,7 +91,7 @@
      <ITEM name="TopLineAddress">00000060</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="218" flags="0000000a" y="309" h="8" pid="13" iid="1">
+   <POPUP w="16" x="423" flags="0000000b" y="161" h="8" pid="13" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -101,11 +101,27 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="972" x="733" flags="0000002b" y="361" h="573" pid="1" iid="1">
+   <POPUP w="972" x="255" flags="0000802b" y="270" h="616" pid="1" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"",00C2,0000,B522,1AF0,1
+     <ITEM name="Breakpoint 0">"",011E,0000,0FAC,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 1">"",0092,0000,1E4E,1AF0,1
+     <ITEM name="Breakpoint 1">"",007C,0000,2F21,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 2">"",009A,0000,70D1,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 3">"",009E,0000,144F,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 4">"",00AE,0000,2ED7,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 5">"",00C2,0000,2E27,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 6">"",013E,0000,E9E9,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 7">"",0144,0000,D7BB,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 8">"",015C,0000,4DE2,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 9">"",0172,0000,6388,1AF0,1
 </ITEM>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>
@@ -116,7 +132,7 @@
      <ITEM name="nBreakpoints">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="300" x="925" flags="0000000b" y="115" h="300" pid="2" iid="1">
+   <POPUP w="300" x="145" flags="0000000a" y="119" h="300" pid="2" iid="1">
     <PROPERTIES>
      <ITEM name="Address Column Width">94</ITEM>
      <ITEM name="AutoResize">No</ITEM>
