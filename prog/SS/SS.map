@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  D:\MPS\prog\SS\SS.asm Sun Dec 08 21:47:09 2019
+AVRASM ver. 2.1.42  D:\MPS\prog\SS\SS.asm Mon Dec 09 19:41:00 2019
 
 
 EQU  SIGNATURE_000 0000001e
@@ -472,6 +472,13 @@ EQU  ERDYaddr     0000000f
 EQU  SPMRaddr     00000010
 EQU  INT_VECTORS_SIZE 00000011
 DEF  temp         r16
+DEF  counter      r17
+DEF  on_off       r18
+DEF  device_number r19
+DEF  actual_device_statuses r24
+DEF  temp2        r25
+DEF  counter2     r26
+DEF  a_status     r1
 DEF  time_extra   r20
 DEF  time_seconds r21
 DEF  time_minutes r22
@@ -479,12 +486,29 @@ DEF  time_hours   r23
 EQU  XTALL        007a1200
 EQU  BAUD         00002580
 EQU  SPEED        00000033
+DSEG schedule_count 00000060
+DSEG schedule_start 00000061
 CSEG INIT         00000020
-CSEG TIME0_OVER   00000063
+CSEG TIME0_OVER   000000b4
 CSEG MAIN         0000003c
 CSEG skip_in      00000045
-CSEG recieve_schedule 00000051
-CSEG ok_msg       00000048
-CSEG out_com      0000005a
-CSEG in_com       0000005e
-CSEG time0_continue 00000074
+CSEG recieve_schedule 0000009c
+CSEG ok_msg       00000093
+CSEG out_schedule 00000047
+CSEG next_time    0000004d
+CSEG end_out_schedule 00000086
+CSEG next_minutes 00000061
+CSEG skip_MS      00000070
+CSEG execute_device_status 00000075
+CSEG next_seconds 00000067
+CSEG skip_S       00000073
+CSEG skip_time    0000006c
+CSEG set_bit_temp2 0000008a
+CSEG SET_OFF      00000080
+CSEG set_bit_end  00000092
+CSEG set_bit_cicle 0000008e
+CSEG out_com      000000ac
+CSEG recieve_cicle 000000a0
+CSEG in_com       000000b0
+CSEG end_recieve  000000ab
+CSEG time0_continue 000000c6

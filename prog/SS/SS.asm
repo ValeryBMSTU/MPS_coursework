@@ -1,7 +1,19 @@
 ;.include "8515def.inc" ;Файл определений AT90S8515
 .include "m8515def.inc" ;файл определений ATmega8515
 
-.def temp = R16	;Временный буфер
+.def temp = R16		;Временный буфер
+.def counter = R17 	;Счетчик для циклов
+.def on_off = R18 	;Признак того, что нужно выключить (1)
+				  	;или выключить (0) устройство 
+.def device_number = R19 ;Номер устройства, которое
+						 ;необзодимо включить/выключить
+.def actual_device_statuses = R24 ;Отображает устройства, для
+							;которых уже выведено актуально состояние
+.def temp2 = R25	;Дополнительный временный буфер
+.def counter2 = R26 ;Дополнительный счетчик для циклов
+
+.def a_status = R1 ;Регистр хранения статусов устройств на порте A
+
 
 .def time_extra = R20	;Дополнительный регистр времени 1
 .def time_seconds = R21 ;Дополнительный регистр времени 2
@@ -13,8 +25,13 @@
 .equ	SPEED	=(XTALL/(16*BAUD))-1	;Коэфициент деления для получения 
 										;заданой скорости обмена
 
+.dseg
+.org $060
 
+schedule_count: .byte 1
+schedule_start:	.byte 1
 
+.cseg
 .org $000
 	rjmp INIT
 .org $007
@@ -61,7 +78,7 @@ INIT:
 	ldi time_minutes, 0
 	ldi time_hours, 0
 
-	ldi temp, (1<<CS02|0<<CS01|1<<CS00) ;Предделитель частоты T0 равен 64 (сейчас 1)
+	ldi temp, (1<<CS02|0<<CS01|0<<CS00) ;Предделитель частоты T0 равен 256
 	out TCCR0, temp						;Запуск счетчика T0
 	
 	sei	;Разрешение прерываний
@@ -79,12 +96,134 @@ MAIN:
 	rjmp	main
 
 skip_in:
-	mov		temp, R1
-	out 	PORTA, temp
+	;mov	temp, R1
+	;out 	PORTA, temp
+	rcall 	out_schedule
+	
+
 	rjmp 	main
 
 
-		
+;#### ПРОЦЕДУРА ОБНОВЛЕНИЯ СТАТУСА УСТРОЙСТВ ####
+out_schedule:
+	cli 	;Временно запрещаем прерывания
+	ldi 	YL, low(schedule_start)
+	ldi 	YH, high(schedule_start)
+	ldi 	counter, 0
+	in		temp, PORTA
+	mov		a_status, temp	
+
+next_time:	
+	ldi		XL, low(schedule_count)
+	ldi		XH, high(schedule_count)
+	ld		temp, X
+	cp		counter, temp
+	breq 	end_out_schedule
+	brsh	end_out_schedule
+	inc		counter
+	
+	ldi		on_off, 0 	;По умолчанию устройство нужно выключить
+	ld		temp, Y+
+	sbrc	temp, 7 	;Если необходимо включить устройство  
+	ldi 	on_off, 1	;то устанавливаем соотв. значение в on_off
+
+	andi	temp, 0b00001111	;Определяем номер устройства
+	mov		device_number, temp	;которое включаем/выключаем
+	
+	;mov 	temp, device_number ;Получаем нужный бит
+	;rcall 	set_bit_temp2		;устройства в temp2
+	;and		temp2, actual_device_statuses ;Проверяем актуален ли
+										  ;статус устройства
+	;cpi		temp2, 0  ;Если не равно нулю, то 
+	;brne	skip_time ;статус устройства актуален
+
+	ld		temp, Y+
+	cp		temp, time_hours ;Сравнение по часам
+	breq	next_minutes	 ;Если часы равны, то проверяем минуты
+	brsh	skip_MS		 	 ;Если temp больше hours то
+							 ;прпускаем минуты и секунды и не обновляем статус
+	inc YL					 ;Увеличиваем значеие Y на 2, чтобы
+	inc YL					 ;указатель стоял на следующей записи
+	rjmp	execute_device_status
+	
+next_minutes:
+	ld		temp, Y+
+	cp		temp, time_minutes ;Сравнение по минутам
+	breq	next_seconds	 ;Если минуты равны, то проверяем минуты
+	brsh	skip_S		 	 ;Если temp больше minutes то
+							 ;прпускаем секунды и не обновляем статус
+	inc YL					 ;Увеличиваем значеие Y на 1
+	rjmp	execute_device_status
+
+next_seconds:
+	ld		temp, Y+
+	cp		temp, time_seconds ;Сравнение по секундам
+	breq	execute_device_status
+	brsh	next_time		;Если temp больше seconds, то
+							;то переходим к следующей записи и не обновляем статус
+	rjmp	execute_device_status ;иначе выводим статус устройства
+
+skip_time:
+	inc		YL
+`	inc 	YL
+	inc 	YL
+	rjmp 	next_time
+
+skip_MS:
+	inc 	YL
+	inc 	YL
+	rjmp 	next_time
+
+skip_S:
+	inc 	YL
+	rjmp 	next_time
+
+execute_device_status:
+	mov 	temp, device_number
+	rcall 	set_bit_temp2
+	or 		actual_device_statuses, temp2	;статус которого актуализируем
+
+
+	cpi 	on_off, 1 ;Проверяем нужно ли включить устройстов
+	brne	SET_OFF ;Если не равно, то идем выключать
+	mov		temp, device_number ;Заносим в temp номер текущего устройства
+	rcall 	set_bit_temp2 ;Устанавливаем нужный бит в temp2
+	mov		temp, a_status ;Заносим в temp актуальное состояние порта A	
+	or		temp, temp2 ;Устанавливаем 1 в нужный бит
+	mov		a_status, temp ;Заносим значение temp обратно в порт A
+	rjmp	next_time
+SET_OFF:
+	rcall 	set_bit_temp2 ;Устанавливаем нужный бит в temp2
+	mov		temp, a_status ;Заносим в temp актуальное состояние порта A	
+	com		temp2		;Инвертируем значения в регистре temp2
+	and		temp, temp2	;Устанавливаем 0 в нужный бит
+	mov		a_status, temp	;Заносим значение temp обратно в порт A
+	rjmp	next_time
+
+end_out_schedule:
+	mov		temp, a_status
+	out		PORTA, temp
+	sei		;Вновь разрешаем прерывания
+	ret
+
+
+;#### ПРОЦЕДУРА УСТАНОВКИ БИТА В ПЕРЕМЕННОЙ temp2 ####
+set_bit_temp2:	
+	ldi 	temp2, 1
+	ldi 	counter2, 1
+	cp 		counter2, temp
+	breq	set_bit_end	
+
+set_bit_cicle:
+	lsl 	temp2
+	inc 	counter2
+	cp  	counter2, temp
+	brne	set_bit_cicle 
+
+set_bit_end:
+	ret
+
+;#### ПРОЦЕДУРА ОТПРАВКИ СООБЩЕНИЯ OK ####
 ok_msg:
 	ldi		temp,'O'
 	rcall	out_com
@@ -96,33 +235,47 @@ ok_msg:
 	rcall	out_com
 	ret
 
+;#### ПРОЦЕДУРА ПРИЕМА РАСПИСАНИЯ ####
 recieve_schedule:
+	ldi		XL, low(schedule_count)
+	ldi		XH, low(schedule_count)
+	ldi 	YL, low(schedule_start)
+	ldi 	YH, high(schedule_start)
+
+recieve_cicle:
 	rcall	in_com		;Считываем данные
-	mov 	R1, temp	;Считываем номер устройства (Пока пусть 1 бит = 1 устройство) 
+	cpi 	temp, 0b11111111 ;Признак окончания
+	breq	end_recieve ;передачи расписания
+
+	st 		Y+, temp	;Считываем заголовок, определяющий
+	rcall 	in_com		;номер устройства и включение/отключение его
+	st 		Y+, temp	;Считываем часы начала работы
 	rcall 	in_com
-	mov 	R2, temp	;Считываем часы начала работы
+	st		Y+, temp	;Считываем минуты начала работы
 	rcall 	in_com
-	mov		R3, temp	;Считываем минуты начала работы
-	rcall 	in_com
-	mov 	R4, temp	;Считываем секунды начала работы
+	st 		Y+, temp	;Считываем секунды начала работы
+	rjmp recieve_cicle
+end_recieve:
 	ret
 
-;#### ОТПРАВКА БАЙТА ЧЕРЕЗ UART ####
+;#### ПРОЦЕДУРА ОТПРАВКА БАЙТА ЧЕРЕЗ UART ####
 out_com:	
 	sbis	UCSRA,UDRE	;Ожидание, когда бит UDRE 
 	rjmp	out_com		;будет установлен в 1 (предыдущий байт отправлен) 
 	out		UDR,temp	;Отправляем байт
 	ret
 
-;#### ПРИЕМ БАЙТА ЧЕРЕЗ UART ####
+;#### ПРОЦЕДУРА ПРИЕМ БАЙТА ЧЕРЕЗ UART ####
 in_com:		
 	sbis	UCSRA,RXC	;Ожидание, когда бит RXC будет установлен в 1 
 	rjmp	in_com		;(в регистре данных есть принятый непрочитанный байт) 
 	in		temp,UDR	;Считываем принятый байт
 	ret
-
-	rjmp MAIN
 	
+
+
+;#### РАЗЛИЧНЫЕ ПРЕРЫВАНИЯ ####
+
 TIME0_OVER:
 	ldi temp, 6	;Установка начала отчета 
 	out TCNT0, temp ;для счетчика T0 (при 9 МГц)
@@ -131,6 +284,7 @@ TIME0_OVER:
 	cpi time_extra, 0
 	brne time0_continue
 
+	ldi time_extra, 131 ;Установка начального в дополнительный регистр времени
 	inc time_seconds
 	cpi time_seconds, 60
 	brne time0_continue
