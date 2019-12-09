@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  D:\MPS\prog\SS\SS.asm Mon Dec 09 19:41:00 2019
+AVRASM ver. 2.1.42  D:\MPS\prog\SS\SS.asm Mon Dec 09 21:40:35 2019
 
 
 EQU  SIGNATURE_000 0000001e
@@ -489,7 +489,7 @@ EQU  SPEED        00000033
 DSEG schedule_count 00000060
 DSEG schedule_start 00000061
 CSEG INIT         00000020
-CSEG TIME0_OVER   000000b4
+CSEG TIME0_OVER   000000bb
 CSEG MAIN         0000003c
 CSEG skip_in      00000045
 CSEG recieve_schedule 0000009c
@@ -507,8 +507,8 @@ CSEG set_bit_temp2 0000008a
 CSEG SET_OFF      00000080
 CSEG set_bit_end  00000092
 CSEG set_bit_cicle 0000008e
-CSEG out_com      000000ac
-CSEG recieve_cicle 000000a0
-CSEG in_com       000000b0
-CSEG end_recieve  000000ab
-CSEG time0_continue 000000c6
+CSEG out_com      000000b3
+CSEG recieve_cicle 000000a2
+CSEG in_com       000000b7
+CSEG end_recieve  000000b2
+CSEG time0_continue 000000cd

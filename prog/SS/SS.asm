@@ -238,15 +238,18 @@ ok_msg:
 ;#### ПРОЦЕДУРА ПРИЕМА РАСПИСАНИЯ ####
 recieve_schedule:
 	ldi		XL, low(schedule_count)
-	ldi		XH, low(schedule_count)
+	ldi		XH, high(schedule_count)
 	ldi 	YL, low(schedule_start)
 	ldi 	YH, high(schedule_start)
+	
+	ldi		temp, 0		;Устанавливаем количество записей
+	st		X, temp		;в нуль
 
 recieve_cicle:
 	rcall	in_com		;Считываем данные
 	cpi 	temp, 0b11111111 ;Признак окончания
-	breq	end_recieve ;передачи расписания
-
+	breq	end_recieve 	 ;передачи расписания
+	
 	st 		Y+, temp	;Считываем заголовок, определяющий
 	rcall 	in_com		;номер устройства и включение/отключение его
 	st 		Y+, temp	;Считываем часы начала работы
@@ -254,7 +257,15 @@ recieve_cicle:
 	st		Y+, temp	;Считываем минуты начала работы
 	rcall 	in_com
 	st 		Y+, temp	;Считываем секунды начала работы
+	
+	ldi		XL, low(schedule_count)
+	ldi		XH, high(schedule_count)
+	ld		temp, X		;Вытаскиваем количество записей на данный момент
+	inc		temp		;Увеличиваем количество записей
+	st		X, temp		;Записываем кол-во записей по адресу X
+
 	rjmp recieve_cicle
+
 end_recieve:
 	ret
 

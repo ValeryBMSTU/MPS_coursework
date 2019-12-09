@@ -22,7 +22,7 @@
   <schedule_count><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>31</LINE></schedule_count>
   <schedule_start><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>32</LINE></schedule_start>
   <INIT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>42</LINE></INIT>
-  <TIME0_OVER><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>279</LINE></TIME0_OVER>
+  <TIME0_OVER><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>290</LINE></TIME0_OVER>
   <MAIN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>86</LINE></MAIN>
   <skip_in><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>98</LINE></skip_in>
   <recieve_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>239</LINE></recieve_schedule>
@@ -40,10 +40,10 @@
   <SET_OFF><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>195</LINE></SET_OFF>
   <set_bit_end><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>223</LINE></set_bit_end>
   <set_bit_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>217</LINE></set_bit_cicle>
-  <out_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>262</LINE></out_com>
-  <recieve_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>245</LINE></recieve_cicle>
-  <in_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>269</LINE></in_com>
-  <end_recieve><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>258</LINE></end_recieve>
-  <time0_continue><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>303</LINE></time0_continue>
+  <out_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>273</LINE></out_com>
+  <recieve_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>248</LINE></recieve_cicle>
+  <in_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>280</LINE></in_com>
+  <end_recieve><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>269</LINE></end_recieve>
+  <time0_continue><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>314</LINE></time0_continue>
  </LABELS>
 </ASSEMBLER_INFO>
