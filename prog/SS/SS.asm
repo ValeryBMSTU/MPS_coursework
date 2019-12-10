@@ -10,9 +10,11 @@
 .def actual_device_statuses = R24 ;Отображает устройства, для
 							;которых уже выведено актуально состояние
 .def temp2 = R25	;Дополнительный временный буфер
-.def counter2 = R2 ;Дополнительный счетчик для циклов
 
 .def a_status = R1 ;Регистр хранения статусов устройств на порте A
+.def counter2 = R2 ;Дополнительный счетчик для циклов
+.def flag = R3 ;Вспомогательынй флаг для различных признаков
+.def force_devices = R4 ;Регистр устройств, запущенных в принудительном режиме
 
 
 .def time_extra = R20	;Дополнительный регистр времени 1
@@ -168,9 +170,9 @@ check_klava:
 	out PORTC, temp
 
 	sbic PINC, 0
-	rcall SSM
+	rcall FON
 	sbic PINC, 1
-	rcall STM
+	rcall FOFF
 	sbic PINC, 2
 	rcall GSS
 	sbic PINC, 3
@@ -497,9 +499,140 @@ SDT:
 
 	sei
 	ret
-SSM:
-STM:
+
+FON:
+	cli
+
+	ldi temp, 0
+	mov flag, temp
+
+fon_cicle:
+	ldi temp, (1<<4)
+	out PORTC, temp
+
+	sbic PINC, 0
+	rcall ON_SEVEN
+	sbic PINC, 1
+	rcall ON_FOUR
+	sbic PINC, 2
+	rcall ON_ONE
+	sbic PINC, 3
+	rcall CANSEL
+
+	ldi temp, (1<<5)
+	out PORTC, temp
+
+	sbic PINC, 0
+	rcall ON_EIGHT
+	sbic PINC, 1
+	rcall ON_FIVE
+	sbic PINC, 2
+	rcall ON_TWO
+
+	ldi temp, (1<<6)
+	out PORTC, temp
+
+	sbic PINC, 1
+	rcall ON_SIX
+	sbic PINC, 2
+	rcall ON_THREE
+
+	mov	temp, flag
+	cpi temp, 0
+	breq fon_cicle
+
+	sei
 	ret
+
+ON_ONE:
+	sbic PINC, 0
+	rjmp ON_ONE
+
+	ldi temp, (1<<0)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_TWO:
+	sbic PINC, 1
+	rjmp ON_TWO
+
+	ldi temp, (1<<1)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_THREE:
+	sbic PINC, 2
+	rjmp ON_THREE
+
+	ldi temp, (1<<2)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_FOUR:
+	sbic PINC, 0
+	rjmp ON_FOUR
+
+	ldi temp, (1<<3)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_FIVE:
+	sbic PINC, 1
+	rjmp ON_FIVE
+	ldi temp, (1<<4)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_SIX:
+	sbic PINC, 2
+	rjmp ON_SIX
+
+	ldi temp, (1<<5)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_SEVEN:
+	sbic PINC, 0
+	rjmp ON_SEVEN
+
+	ldi temp, (1<<6)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+ON_EIGHT:
+	sbic PINC, 1
+	rjmp ON_EIGHT
+
+	ldi temp, (1<<7)
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+CANSEL:
+	ldi temp, 255
+	mov flag, temp
+	ret
+
+
+FOFF:
+
+	ret
+
 GSS:
 	cli
 	sbic PINC, 2

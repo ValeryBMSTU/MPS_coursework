@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  D:\MPS\prog\SS\SS.asm Tue Dec 10 01:00:26 2019
+AVRASM ver. 2.1.42  D:\MPS\prog\SS\SS.asm Tue Dec 10 12:58:22 2019
 
 
 EQU  SIGNATURE_000 0000001e
@@ -477,8 +477,10 @@ DEF  on_off       r18
 DEF  device_number r19
 DEF  actual_device_statuses r24
 DEF  temp2        r25
-DEF  counter2     r2
 DEF  a_status     r1
+DEF  counter2     r2
+DEF  flag         r3
+DEF  force_devices r4
 DEF  time_extra   r20
 DEF  time_seconds r21
 DEF  time_minutes r22
@@ -489,12 +491,12 @@ EQU  SPEED        00000033
 DSEG schedule_count 00000060
 DSEG schedule_start 00000061
 CSEG INIT         00000020
-CSEG TIME0_OVER   0000025f
+CSEG TIME0_OVER   000002c2
 CSEG MAIN         00000040
 CSEG skip_in      00000049
-CSEG recieve_schedule 00000240
-CSEG ok_msg       00000237
-CSEG out_schedule 000001eb
+CSEG recieve_schedule 000002a3
+CSEG ok_msg       0000029a
+CSEG out_schedule 0000024e
 CSEG check_klava  00000055
 CSEG L1           0000004e
 CSEG SEVEN        0000007f
@@ -509,24 +511,34 @@ CSEG NINE         00000153
 CSEG SIX          00000153
 CSEG THREE        00000153
 CSEG SDT          00000154
-CSEG SSM          00000196
-CSEG STM          00000196
-CSEG GSS          00000197
-CSEG GST          000001c2
-CSEG out_com      00000257
-CSEG next_time    000001f1
-CSEG end_out_schedule 0000022a
-CSEG next_minutes 00000205
-CSEG skip_MS      00000214
-CSEG execute_device_status 00000219
-CSEG next_seconds 0000020b
-CSEG skip_S       00000217
-CSEG skip_time    00000210
-CSEG set_bit_temp2 0000022e
-CSEG SET_OFF      00000224
-CSEG set_bit_end  00000236
-CSEG set_bit_cicle 00000232
-CSEG recieve_cicle 00000246
-CSEG in_com       0000025b
-CSEG end_recieve  00000256
-CSEG time0_continue 00000271
+CSEG FON          00000196
+CSEG FOFF         000001f9
+CSEG GSS          000001fa
+CSEG GST          00000225
+CSEG out_com      000002ba
+CSEG fon_cicle    00000199
+CSEG ON_SEVEN     000001e6
+CSEG ON_FOUR      000001ce
+CSEG ON_ONE       000001b6
+CSEG CANSEL       000001f6
+CSEG ON_EIGHT     000001ee
+CSEG ON_FIVE      000001d6
+CSEG ON_TWO       000001be
+CSEG ON_SIX       000001de
+CSEG ON_THREE     000001c6
+CSEG next_time    00000254
+CSEG end_out_schedule 0000028d
+CSEG next_minutes 00000268
+CSEG skip_MS      00000277
+CSEG execute_device_status 0000027c
+CSEG next_seconds 0000026e
+CSEG skip_S       0000027a
+CSEG skip_time    00000273
+CSEG set_bit_temp2 00000291
+CSEG SET_OFF      00000287
+CSEG set_bit_end  00000299
+CSEG set_bit_cicle 00000295
+CSEG recieve_cicle 000002a9
+CSEG in_com       000002be
+CSEG end_recieve  000002b9
+CSEG time0_continue 000002d4
