@@ -109,7 +109,14 @@ skip_in:
 	rcall 	out_schedule
 	rcall 	check_klava
 	
+	rcall 	DELAY
 
+	rjmp 	main	
+
+
+
+
+DELAY:
 ; Delay 800 000 cycles (0.1 секунды задержка
 ; для уменьшение нагрузки на симуляцию в
 ; протеусе при 8.0 MHz)
@@ -123,9 +130,8 @@ L1: dec  	r17
     brne 	L1
     dec  	r18
     brne 	L1
+	ret
 
-
-	rjmp 	main
 
 ;#### ПРОЦЕДУРА ОПРОСА МАТРИЧНОЙ КЛАВИАТУРЫ ####
 check_klava:
@@ -537,6 +543,8 @@ fon_cicle:
 	sbic PINC, 2
 	rcall ON_THREE
 
+	rcall 	DELAY
+
 	mov	temp, flag
 	cpi temp, 0
 	breq fon_cicle
@@ -545,7 +553,7 @@ fon_cicle:
 	ret
 
 ON_ONE:
-	sbic PINC, 0
+	sbic PINC, 2
 	rjmp ON_ONE
 
 	ldi temp, (1<<0)
@@ -555,7 +563,7 @@ ON_ONE:
 	mov	flag, temp
 	ret
 ON_TWO:
-	sbic PINC, 1
+	sbic PINC, 2
 	rjmp ON_TWO
 
 	ldi temp, (1<<1)
@@ -575,7 +583,7 @@ ON_THREE:
 	mov	flag, temp
 	ret
 ON_FOUR:
-	sbic PINC, 0
+	sbic PINC, 1
 	rjmp ON_FOUR
 
 	ldi temp, (1<<3)
@@ -594,7 +602,7 @@ ON_FIVE:
 	mov	flag, temp
 	ret
 ON_SIX:
-	sbic PINC, 2
+	sbic PINC, 1
 	rjmp ON_SIX
 
 	ldi temp, (1<<5)
@@ -614,7 +622,7 @@ ON_SEVEN:
 	mov	flag, temp
 	ret
 ON_EIGHT:
-	sbic PINC, 1
+	sbic PINC, 0
 	rjmp ON_EIGHT
 
 	ldi temp, (1<<7)
@@ -623,6 +631,8 @@ ON_EIGHT:
 	out PORTA, a_status
 	mov	flag, temp
 	ret
+
+
 CANSEL:
 	ldi temp, 255
 	mov flag, temp
@@ -630,8 +640,143 @@ CANSEL:
 
 
 FOFF:
+	cli
 
+
+	ldi temp, 0
+	mov flag, temp
+
+foff_cicle:
+	ldi temp, (1<<4)
+	out PORTC, temp
+
+	sbic PINC, 0
+	rcall OFF_SEVEN
+	sbic PINC, 1
+	rcall OFF_FOUR
+	sbic PINC, 2
+	rcall OFF_ONE
+	sbic PINC, 3
+	rcall CANSEL
+
+	ldi temp, (1<<5)
+	out PORTC, temp
+
+	sbic PINC, 0
+	rcall OFF_EIGHT
+	sbic PINC, 1
+	rcall OFF_FIVE
+	sbic PINC, 2
+	rcall OFF_TWO
+
+	ldi temp, (1<<6)
+	out PORTC, temp
+
+	sbic PINC, 1
+	rcall OFF_SIX
+	sbic PINC, 2
+	rcall OFF_THREE
+
+	rcall 	DELAY
+
+	mov	temp, flag
+	cpi temp, 0
+	breq foff_cicle
+
+	rcall 	DELAY
+
+	sei
 	ret
+
+OFF_ONE:
+	sbic PINC, 2
+	rjmp OFF_ONE
+
+	ldi temp, (1<<0)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_TWO:
+	sbic PINC, 2
+	rjmp OFF_TWO
+
+	ldi temp, (1<<1)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_THREE:
+	sbic PINC, 2
+	rjmp OFF_THREE
+
+	ldi temp, (1<<2)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_FOUR:
+	sbic PINC, 1
+	rjmp OFF_FOUR
+
+	ldi temp, (1<<3)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_FIVE:
+	sbic PINC, 1
+	rjmp OFF_FIVE
+
+	ldi temp, (1<<4)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_SIX:
+	sbic PINC, 1
+	rjmp OFF_SIX
+
+	ldi temp, (1<<5)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_SEVEN:
+	sbic PINC, 0
+	rjmp OFF_SEVEN
+
+	ldi temp, (1<<6)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_EIGHT:
+	sbic PINC, 0
+	rjmp OFF_EIGHT
+
+	ldi temp, (1<<7)
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
+
 
 GSS:
 	cli
@@ -799,9 +944,12 @@ skip_S:
 
 execute_device_status:
 	mov 	temp, device_number
-	rcall 	set_bit_temp2
+	rcall 	set_bit_temp2                   ;выставляем номер бита устройства,
 	or 		actual_device_statuses, temp2	;статус которого актуализируем
 
+	and		temp2, force_devices ;Если выбранное устройство находится в принудительном режиме
+	cpi		temp2, 0				 ;то пропускаем это устройство и переходим к
+	brne	next_time			 ;следующему сообщению
 
 	cpi 	on_off, 1 ;Проверяем нужно ли включить устройстов
 	brne	SET_OFF ;Если не равно, то идем выключать
