@@ -22,66 +22,59 @@
   <schedule_count><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>33</LINE></schedule_count>
   <schedule_start><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>34</LINE></schedule_start>
   <INIT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>44</LINE></INIT>
-  <TIME0_OVER><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1057</LINE></TIME0_OVER>
+  <TIME0_OVER><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1043</LINE></TIME0_OVER>
   <MAIN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>94</LINE></MAIN>
   <skip_in><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>106</LINE></skip_in>
-  <recieve_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1006</LINE></recieve_schedule>
-  <ok_msg><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>994</LINE></ok_msg>
-  <out_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>872</LINE></out_schedule>
+  <recieve_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>992</LINE></recieve_schedule>
+  <ok_msg><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>980</LINE></ok_msg>
+  <out_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>858</LINE></out_schedule>
   <check_klava><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>137</LINE></check_klava>
   <DELAY><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>119</LINE></DELAY>
   <L1><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>127</LINE></L1>
-  <SEVEN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>190</LINE></SEVEN>
-  <FOUR><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>196</LINE></FOUR>
-  <ONE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>202</LINE></ONE>
-  <ZERO><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>208</LINE></ZERO>
-  <EIGHT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>213</LINE></EIGHT>
-  <FIVE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>214</LINE></FIVE>
-  <TWO><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>215</LINE></TWO>
-  <SDS><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>216</LINE></SDS>
-  <NINE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>434</LINE></NINE>
-  <SIX><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>435</LINE></SIX>
-  <THREE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>436</LINE></THREE>
-  <SDT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>438</LINE></SDT>
-  <FON><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>509</LINE></FON>
-  <FOFF><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>642</LINE></FOFF>
-  <GSS><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>781</LINE></GSS>
-  <GST><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>826</LINE></GST>
-  <out_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1040</LINE></out_com>
-  <fon_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>515</LINE></fon_cicle>
-  <ON_SEVEN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>614</LINE></ON_SEVEN>
-  <ON_FOUR><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>585</LINE></ON_FOUR>
-  <ON_ONE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>555</LINE></ON_ONE>
-  <CANSEL><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>636</LINE></CANSEL>
-  <ON_EIGHT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>624</LINE></ON_EIGHT>
-  <ON_FIVE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>595</LINE></ON_FIVE>
-  <ON_TWO><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>565</LINE></ON_TWO>
-  <ON_SIX><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>604</LINE></ON_SIX>
-  <ON_THREE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>575</LINE></ON_THREE>
-  <foff_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>649</LINE></foff_cicle>
-  <OFF_SEVEN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>757</LINE></OFF_SEVEN>
-  <OFF_FOUR><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>724</LINE></OFF_FOUR>
-  <OFF_ONE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>691</LINE></OFF_ONE>
-  <OFF_EIGHT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>768</LINE></OFF_EIGHT>
-  <OFF_FIVE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>735</LINE></OFF_FIVE>
-  <OFF_TWO><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>702</LINE></OFF_TWO>
-  <OFF_SIX><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>746</LINE></OFF_SIX>
-  <OFF_THREE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>713</LINE></OFF_THREE>
-  <next_time><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>880</LINE></next_time>
-  <end_out_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>970</LINE></end_out_schedule>
-  <next_minutes><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>913</LINE></next_minutes>
-  <skip_MS><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>936</LINE></skip_MS>
-  <execute_device_status><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>945</LINE></execute_device_status>
-  <next_seconds><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>922</LINE></next_seconds>
-  <skip_S><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>941</LINE></skip_S>
-  <skip_time><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>930</LINE></skip_time>
-  <set_bit_temp2><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>978</LINE></set_bit_temp2>
-  <SET_OFF><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>962</LINE></SET_OFF>
-  <set_bit_end><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>990</LINE></set_bit_end>
-  <set_bit_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>984</LINE></set_bit_cicle>
-  <recieve_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1015</LINE></recieve_cicle>
-  <in_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1047</LINE></in_com>
-  <end_recieve><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1036</LINE></end_recieve>
-  <time0_continue><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1081</LINE></time0_continue>
+  <RESTART><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>171</LINE></RESTART>
+  <SDS><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>178</LINE></SDS>
+  <SDT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>397</LINE></SDT>
+  <FON><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>468</LINE></FON>
+  <FOFF><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>614</LINE></FOFF>
+  <GSS><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>767</LINE></GSS>
+  <GST><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>812</LINE></GST>
+  <out_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1026</LINE></out_com>
+  <fon_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>474</LINE></fon_cicle>
+  <ON_SEVEN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>575</LINE></ON_SEVEN>
+  <ON_FOUR><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>546</LINE></ON_FOUR>
+  <ON_ONE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>516</LINE></ON_ONE>
+  <CANSEL><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>606</LINE></CANSEL>
+  <ON_EIGHT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>585</LINE></ON_EIGHT>
+  <ON_FIVE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>556</LINE></ON_FIVE>
+  <ON_TWO><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>526</LINE></ON_TWO>
+  <ON_ALL><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>595</LINE></ON_ALL>
+  <ON_SIX><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>565</LINE></ON_SIX>
+  <ON_THREE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>536</LINE></ON_THREE>
+  <foff_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>621</LINE></foff_cicle>
+  <OFF_SEVEN><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>731</LINE></OFF_SEVEN>
+  <OFF_FOUR><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>698</LINE></OFF_FOUR>
+  <OFF_ONE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>665</LINE></OFF_ONE>
+  <OFF_EIGHT><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>742</LINE></OFF_EIGHT>
+  <OFF_FIVE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>709</LINE></OFF_FIVE>
+  <OFF_TWO><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>676</LINE></OFF_TWO>
+  <OFF_ALL><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>753</LINE></OFF_ALL>
+  <OFF_SIX><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>720</LINE></OFF_SIX>
+  <OFF_THREE><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>687</LINE></OFF_THREE>
+  <next_time><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>866</LINE></next_time>
+  <end_out_schedule><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>956</LINE></end_out_schedule>
+  <next_minutes><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>899</LINE></next_minutes>
+  <skip_MS><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>922</LINE></skip_MS>
+  <execute_device_status><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>931</LINE></execute_device_status>
+  <next_seconds><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>908</LINE></next_seconds>
+  <skip_S><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>927</LINE></skip_S>
+  <skip_time><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>916</LINE></skip_time>
+  <set_bit_temp2><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>964</LINE></set_bit_temp2>
+  <SET_OFF><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>948</LINE></SET_OFF>
+  <set_bit_end><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>976</LINE></set_bit_end>
+  <set_bit_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>970</LINE></set_bit_cicle>
+  <recieve_cicle><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1001</LINE></recieve_cicle>
+  <in_com><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1033</LINE></in_com>
+  <end_recieve><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1022</LINE></end_recieve>
+  <time0_continue><FILE>D:\MPS\prog\SS\SS.asm</FILE><LINE>1067</LINE></time0_continue>
  </LABELS>
 </ASSEMBLER_INFO>

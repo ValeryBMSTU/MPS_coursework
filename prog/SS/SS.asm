@@ -139,36 +139,18 @@ check_klava:
 	ldi temp, 0b00011111
 	out PORTC, temp
 
-	sbic PINC, 0
-	rcall SEVEN
-	sbic PINC, 1
-	rcall FOUR
-	sbic PINC, 2
-	rcall ONE
 	sbic PINC, 3
-	rcall ZERO
+	rcall RESTART
 
 	ldi temp, (1<<5)
 	out PORTC, temp
 
-	sbic PINC, 0
-	rcall EIGHT
-	sbic PINC, 1
-	rcall FIVE
-	sbic PINC, 2
-	rcall TWO
 	sbic PINC, 3
 	rcall SDS
 
 	ldi temp, (1<<6)
 	out PORTC, temp
 
-	sbic PINC, 0
-	rcall NINE
-	sbic PINC, 1
-	rcall SIX
-	sbic PINC, 2
-	rcall THREE
 	sbic PINC, 3
 	rcall SDT
 
@@ -186,33 +168,13 @@ check_klava:
 
 	ret
 
-
-SEVEN:
-	in temp, PORTA
-	ori temp, 0b01000000
-	out	PORTA, temp
+RESTART:
+	sbic PINC, 3
+	rjmp RESTART
+	ldi	temp, 0
+	mov force_devices, temp
 	ret
 
-FOUR:
-	in temp, PORTA
-	ori temp, 0b00001000
-	out	PORTA, temp
-	ret
-
-ONE:
-	in temp, PORTA
-	ori temp, 0b00000001
-	out	PORTA, temp
-	ret
-
-ZERO:
-	ldi temp, 0
-	out PORTA, temp
-	ret
-
-EIGHT:
-FIVE:
-TWO:
 SDS:
 	cli
 	sbic PINC, 3
@@ -431,10 +393,7 @@ SDS:
 
 	sei
 	ret
-NINE:
-SIX:
-THREE:
-	ret
+
 SDT:
 	cli
 	sbic PINC, 3
@@ -538,6 +497,8 @@ fon_cicle:
 	ldi temp, (1<<6)
 	out PORTC, temp
 
+	sbic PINC, 0
+	rcall ON_ALL
 	sbic PINC, 1
 	rcall ON_SIX
 	sbic PINC, 2
@@ -631,9 +592,20 @@ ON_EIGHT:
 	out PORTA, a_status
 	mov	flag, temp
 	ret
+ON_ALL:
+	sbic PINC, 0
+	rjmp ON_ALL
 
+	ldi temp, 255
+	or	a_status, temp
+	or  force_devices, temp
+	out PORTA, a_status
+	mov	flag, temp
+	ret
 
 CANSEL:
+	sbic PINC, 3
+	rjmp CANSEL
 	ldi temp, 255
 	mov flag, temp
 	ret
@@ -672,6 +644,8 @@ foff_cicle:
 	ldi temp, (1<<6)
 	out PORTC, temp
 
+	sbic PINC, 0
+	rcall OFF_ALL
 	sbic PINC, 1
 	rcall OFF_SIX
 	sbic PINC, 2
@@ -774,6 +748,18 @@ OFF_EIGHT:
 	com	temp
 	and	a_status, temp
 	out PORTA, a_status
+	mov	flag, temp
+	ret
+OFF_ALL:
+	sbic PINC, 0
+	rjmp OFF_ALL
+
+	ldi temp, 255
+	or  force_devices, temp
+	com	temp
+	and	a_status, temp
+	out PORTA, a_status
+	ldi temp, 1
 	mov	flag, temp
 	ret
 
