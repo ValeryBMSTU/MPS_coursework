@@ -15,6 +15,7 @@
 .def counter2 = R2 ;Дополнительный счетчик для циклов
 .def flag = R3 ;Вспомогательынй флаг для различных признаков
 .def force_devices = R4 ;Регистр устройств, запущенных в принудительном режиме
+.def ascii_numbers_start = R5
 
 
 .def time_extra = R20	;Дополнительный регистр времени 1
@@ -66,6 +67,43 @@ INIT:
 	clr temp
 	out PORTA, temp
 
+	ser temp			;Инициализация порта B на выход
+	out DDRB, temp
+	clr temp
+	out PORTB, temp
+
+	ldi temp, 28		;Инизиализация выводов PD2,PD3,PD4 на выход
+	out	DDRD, temp
+	
+
+	;Настройка дисплея
+	cbi PORTD, 2
+	cbi PORTD, 3
+	sbi PORTD, 4
+	rcall DELAY
+	ldi temp, 0b00001100
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall DELAY
+	sbi PORTD, 4
+	rcall DELAY
+	ldi temp, 0b00000001
+	out PORTB, temp
+	cbi PORTD, 4
+	sbi PORTD, 4
+	rcall DELAY
+
+	;Тестовая запись "0"
+	;sbi PORTD, 2
+	;rcall DELAY
+	;ldi temp, 0b00110000
+	;out PORTB, temp
+	;cbi PORTD, 4
+	;rcall DELAY
+	;sbi PORTD, 4
+
+
+
 	ldi temp, 0b11110000
 	out DDRC, temp ;Инициализируем PC0-3 на вход, PC4-7 на выход
 	ldi temp, 0b00001111
@@ -108,7 +146,7 @@ skip_in:
 	;out 	PORTA, temp
 	rcall 	out_schedule
 	rcall 	check_klava
-	
+	rcall   display
 	rcall 	DELAY
 
 	rjmp 	main	
@@ -131,6 +169,153 @@ L1: dec  	r17
     dec  	r18
     brne 	L1
 	ret
+
+LOW_DELAY:
+    ldi  	r17, 250
+L2: dec  	r17
+    brne 	L2
+	ret
+
+display:
+	cli
+
+	cbi PORTD, 2
+	rcall LOW_DELAY
+	ldi temp,0b00000001
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	sbi	PORTD, 2
+	rcall LOW_DELAY
+
+	cbi PORTD, 2
+	rcall LOW_DELAY
+	ldi temp,0b00010100
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	sbi	PORTD, 2
+
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	
+	ldi temp, 0x30
+	mov ascii_numbers_start, temp
+
+	clr temp2
+	mov temp, time_hours
+
+hours_cicle:
+	cpi temp, 10.
+	brlo out_hours
+	inc temp2
+	subi temp, 10
+	rjmp hours_cicle
+
+out_hours:
+	add temp2, ascii_numbers_start
+	out PORTB, temp2
+	rcall LOW_DELAY
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	rcall LOW_DELAY
+
+`	add temp, ascii_numbers_start
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	rcall LOW_DELAY
+	
+
+	sei
+	nop
+	nop
+	nop
+	cli
+
+	cbi PORTD, 2
+	rcall LOW_DELAY
+	ldi temp,0b00010100
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	sbi	PORTD, 2
+
+
+	clr temp2
+	mov temp, time_minutes
+
+minutes_cicle:
+	cpi temp, 10.
+	brlo out_minutes
+	inc temp2
+	subi temp, 10
+	rjmp minutes_cicle
+
+out_minutes:
+	add temp2, ascii_numbers_start
+	out PORTB, temp2
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	rcall LOW_DELAY
+
+	add temp, ascii_numbers_start
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	rcall LOW_DELAY
+
+	sei
+	nop
+	nop
+	nop
+	cli
+
+	cbi PORTD, 2
+	rcall LOW_DELAY
+	ldi temp,0b00010100
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	sbi	PORTD, 2
+
+	clr temp2
+	mov temp, time_seconds
+
+seconds_cicle:
+	cpi temp, 10.
+	brlo out_seconds
+	inc temp2
+	subi temp, 10
+	rjmp seconds_cicle
+
+out_seconds:
+	add temp2, ascii_numbers_start
+	out PORTB, temp2
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	rcall LOW_DELAY
+
+	add temp, ascii_numbers_start
+	out PORTB, temp
+	cbi PORTD, 4
+	rcall LOW_DELAY
+	sbi PORTD, 4
+	rcall LOW_DELAY
+
+	sei
+	ret
+
 
 
 ;#### ПРОЦЕДУРА ОПРОСА МАТРИЧНОЙ КЛАВИАТУРЫ ####
