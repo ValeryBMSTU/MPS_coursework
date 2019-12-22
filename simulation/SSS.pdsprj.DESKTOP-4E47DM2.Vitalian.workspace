@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffffe8000000420000001207000038040000</PLACEMENT>
+  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff61010000000000008b070000f6030000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
-   <POPUP w="800" x="79" flags="00000002" y="357" h="676" pid="0" iid="-1">
+   <POPUP w="800" x="98" flags="00000002" y="340" h="676" pid="0" iid="-1">
     <PROPERTIES>
      <ITEM name="Message Column Width">542</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
@@ -32,13 +32,13 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="253" flags="00000022" y="583" h="131" pid="0" iid="2">
+   <POPUP w="450" x="126" flags="00000023" y="221" h="131" pid="0" iid="2">
     <PROPERTIES>
      <ITEM name="AutoEcho">1</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="946" flags="00000009" y="121" h="16" pid="3" iid="1">
+   <POPUP w="30" x="1102" flags="00000009" y="180" h="16" pid="3" iid="1">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="118" flags="0000000a" y="209" h="1" pid="10" iid="1">
@@ -81,7 +81,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="193" flags="0000000b" y="461" h="32" pid="4" iid="1">
+   <POPUP w="16" x="880" flags="0000000b" y="475" h="32" pid="4" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -101,9 +101,9 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="972" x="656" flags="0000002b" y="343" h="558" pid="1" iid="1">
+   <POPUP w="972" x="739" flags="0000002b" y="230" h="558" pid="1" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"",010A,0000,3EB2,1AF0,1
+     <ITEM name="Breakpoint 0">"",07D6,0000,9C41,1AF0,1
 </ITEM>
      <ITEM name="Breakpoint 1">"",0360,0000,92B7,1AF0,1
 </ITEM>
