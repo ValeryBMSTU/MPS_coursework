@@ -32,13 +32,13 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="126" flags="00008023" y="221" h="131" pid="0" iid="2">
+   <POPUP w="450" x="126" flags="00000023" y="221" h="131" pid="0" iid="2">
     <PROPERTIES>
      <ITEM name="AutoEcho">1</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="30" x="1102" flags="00000009" y="180" h="16" pid="3" iid="1">
+   <POPUP w="30" x="1037" flags="00000009" y="107" h="16" pid="3" iid="1">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="8" x="118" flags="0000000a" y="209" h="1" pid="10" iid="1">
@@ -81,7 +81,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="880" flags="0000000b" y="475" h="32" pid="4" iid="1">
+   <POPUP w="16" x="396" flags="0000000b" y="220" h="32" pid="4" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -101,27 +101,35 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="972" x="739" flags="0000002b" y="230" h="558" pid="1" iid="1">
+   <POPUP w="972" x="829" flags="0000802b" y="388" h="558" pid="1" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"",07D6,0000,9C41,1AF0,1
+     <ITEM name="Breakpoint 0">"",0142,0000,3355,1AF0,-1
 </ITEM>
-     <ITEM name="Breakpoint 1">"",0360,0000,92B7,1AF0,1
+     <ITEM name="Breakpoint 1">"",0158,0000,52CD,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 2">"",009A,0000,70D1,1AF0,1
+     <ITEM name="Breakpoint 10">"",0868,0000,2291,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 3">"",009E,0000,144F,1AF0,1
+     <ITEM name="Breakpoint 11">"",086E,0000,B3A9,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 4">"",00AE,0000,2ED7,1AF0,1
+     <ITEM name="Breakpoint 12">"",08B0,0000,9C41,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 5">"",00C2,0000,2E27,1AF0,1
+     <ITEM name="Breakpoint 13">"",08B4,0000,C596,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 6">"",013E,0000,E9E9,1AF0,1
+     <ITEM name="Breakpoint 2">"",0170,0000,6170,1AF0,-1
 </ITEM>
-     <ITEM name="Breakpoint 7">"",0144,0000,D7BB,1AF0,1
+     <ITEM name="Breakpoint 3">"",01DA,0000,FE43,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 8">"",015C,0000,4DE2,1AF0,1
+     <ITEM name="Breakpoint 4">"",01DE,0000,F48A,1AF0,1
 </ITEM>
-     <ITEM name="Breakpoint 9">"",0172,0000,6388,1AF0,1
+     <ITEM name="Breakpoint 5">"",03FA,0000,C2CB,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 6">"",040C,0000,EA12,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 7">"",0440,0000,2FC7,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 8">"",078A,0000,FCF3,1AF0,1
+</ITEM>
+     <ITEM name="Breakpoint 9">"",0796,0000,5221,1AF0,1
 </ITEM>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>
